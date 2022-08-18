@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
-import { Home } from '../sites/homePage';
+import { HomePage } from '../sites/homePage';
+import { LoginPage } from '../sites/loginPage';
+import { RegisterPage } from '../sites/registerPage';
 
 function NavbarPenShop() {
 	return (
@@ -10,7 +12,9 @@ function NavbarPenShop() {
 			<div className="Navbar">
 				<Navbar variant="light" expand="lg">
 					<Container>
-						<Navbar.Brand href="#home">PenShop</Navbar.Brand>
+						<Navbar.Brand style={{ fontSize: '1.6rem', fontWeight: 'bold' }} href="#home">
+							PenShop
+						</Navbar.Brand>
 						<Navbar.Toggle aria-controls="basic-navbar-nav" />
 						<Navbar.Collapse id="basic-navbar-nav">
 							<Nav className="me-auto">
@@ -18,19 +22,19 @@ function NavbarPenShop() {
 									Home
 								</Nav.Link>
 								<NavDropdown title="Pens CRUD" id="basic-nav-dropdown">
-									<NavDropdown.Item as={Link} to={'/Pens/List'}>
-										Employees List
+									<NavDropdown.Item as={Link} to={'/pens/list'}>
+										Pens List
 									</NavDropdown.Item>
-									<NavDropdown.Item as={Link} to={'/Pens/Add'}>
-										Add Employee
+									<NavDropdown.Item as={Link} to={'/pens/add'}>
+										Add Pen
 									</NavDropdown.Item>
 								</NavDropdown>
 							</Nav>
 							<Nav>
-								<Nav.Link as={Link} to={'/Login'}>
+								<Nav.Link as={Link} to={'/login'}>
 									Login
 								</Nav.Link>
-								<Nav.Link as={Link} to={'/Register'}>
+								<Nav.Link as={Link} to={'/register'}>
 									Register
 								</Nav.Link>
 							</Nav>
@@ -39,7 +43,9 @@ function NavbarPenShop() {
 				</Navbar>
 			</div>
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route path="/" element={<HomePage />} />
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/register" element={<RegisterPage />} />
 			</Routes>
 		</Router>
 	);

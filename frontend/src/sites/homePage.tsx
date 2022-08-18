@@ -1,7 +1,8 @@
 import React from 'react';
 import { Row, Col, Card, Button, Stack } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-export const Home = () => {
+import '../stylesheets/home.css';
+export const HomePage = () => {
 	return (
 		<div className="Main">
 			<Row className="m-0 p-0">
@@ -13,9 +14,9 @@ export const Home = () => {
 							<Card>
 								<Card.Img variant="top" className="Discount" />
 								<Card.Body>
-									<Card.Title>Now you can order online!</Card.Title>
+									<Card.Title>Now you !</Card.Title>
 									<Link to="/Order/Online" className="btn btn-success ml-2">
-										Order Now!
+										Order
 									</Link>
 								</Card.Body>
 							</Card>
@@ -26,9 +27,9 @@ export const Home = () => {
 							<Card>
 								<Card.Img variant="top" className="Discount" />
 								<Card.Body>
-									<Card.Title>Check Our Newest Pizzas</Card.Title>
+									<Card.Title>Check </Card.Title>
 									<Link to="/Menu" className="btn btn-success ml-2">
-										Go to Menu
+										Go
 									</Link>
 								</Card.Body>
 							</Card>
