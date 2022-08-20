@@ -1,4 +1,4 @@
-import path from 'path';
+/* import path from 'path';
 import multer from 'multer';
 
 let storage = multer.diskStorage({
@@ -25,4 +25,4 @@ let upload = multer({
 		fileSize: 1024 * 1024 * 2
 	}
 });
-module.exports = upload;
+module.exports = upload; */
