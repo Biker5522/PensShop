@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
 import { HomePage } from '../sites/homePage';
 import { LoginPage } from '../sites/loginPage';
 import { RegisterPage } from '../sites/registerPage';
+import { PensListPage } from '../sites/pensController/pensListPage';
 
 function NavbarPenShop() {
 	return (
@@ -46,6 +47,7 @@ function NavbarPenShop() {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/register" element={<RegisterPage />} />
+				<Route path="/pens/list" element={<PensListPage />} />
 			</Routes>
 		</Router>
 	);
