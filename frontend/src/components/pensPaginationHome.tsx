@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Button, Card } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
-
-
-
-
-
-export default function PaginatedPens(props:any) {
+import '../stylesheets/pensPaginationHome.css'
+export default function PaginatedPensHome(props:any) {
     const {data}=props;
   const [currentItems, setCurrentItems] = useState<any>([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 1;
+  const itemsPerPage = 9;
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -30,15 +27,27 @@ export default function PaginatedPens(props:any) {
 
   return (
     <>
+    <div className="HomePensMain">
     <div className='pens'>
         {currentItems.map((pen:any)=>{
             return(
                 <div>
-                    <p><b>{pen.name}</b> {pen.category} {pen.price}$</p>
+                    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={pen.url} />
+      <Card.Body>
+        <Card.Title>{pen.name}</Card.Title>
+        <Card.Text>
+          {pen.category}
+          <p>{pen.price}</p>
+        </Card.Text>
+        <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
                 </div>
             )
         })}
     </div>
+    <div className='paginationNumbers'>
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
@@ -53,6 +62,8 @@ export default function PaginatedPens(props:any) {
         nextLinkClassName='page-num'
         activeLinkClassName='active'
       />
+      </div>
+      </div>
     </>
   );
 }

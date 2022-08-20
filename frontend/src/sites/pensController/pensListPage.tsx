@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Row, Col, Button, ListGroupItem, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { PensHeaderComponent } from './pensHeaderComponent';
-import Pens from '../../components/pens';
+import Pens from '../../components/pensPaginationCRUD';
 
 import axios from 'axios';
 

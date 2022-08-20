@@ -1,42 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, Button, Stack } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import BannerPensShop from '../components/bannerPenShop';
+import Pens from '../components/pensPaginationHome'
 import '../stylesheets/home.css';
+import axios from 'axios';
 export const HomePage = () => {
+	const [ backendData, setBackendData ] = useState<any>([]);
+	//Get pens from Menu
+	useEffect(() => {
+		axios('/pens').then((res) => {
+			setBackendData(res.data.pens);
+			console.log(res.data);
+		});
+	}, []);
+	
 	return (
 		<div className="Main">
 			<Row className="m-0 p-0">
-				<Col sm={2} />
-				<Col sm={8} className="MainRow">
-					<div className="DiscountElements">
-						{/* Discount Card */}
-						<div className="DiscountCard item1 ">
-							<Card>
-								<Card.Img variant="top" className="Discount" />
-								<Card.Body>
-									<Card.Title>Now you !</Card.Title>
-									<Link to="/Order/Online" className="btn btn-success ml-2">
-										Order
-									</Link>
-								</Card.Body>
-							</Card>
-						</div>
-
-						{/* Discount Card */}
-						<div className="DiscountCard item2 ">
-							<Card>
-								<Card.Img variant="top" className="Discount" />
-								<Card.Body>
-									<Card.Title>Check </Card.Title>
-									<Link to="/Menu" className="btn btn-success ml-2">
-										Go
-									</Link>
-								</Card.Body>
-							</Card>
-						</div>
+				<Col sm={1} />
+				<Col sm={10} className="MainRow">
+					<BannerPensShop/>
+					<div className="Products">
+					<Pens data={backendData} />
 					</div>
 				</Col>
-				<Col sm={3} />
+				<Col sm={1} />
 			</Row>
 		</div>
 	);

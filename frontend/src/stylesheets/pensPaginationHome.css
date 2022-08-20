@@ -1,0 +1,19 @@
+.HomePensMain{
+    display: block;
+   align-items: center;
+}
+.pens{
+flex:1;
+}
+.card{
+    display:flex;
+}
+
+.paginationNumbers{
+    display: block;
+    width: 100%;
+    background-color: aquamarine;
+}
+.pens img{
+    max-width:2rem;
+}

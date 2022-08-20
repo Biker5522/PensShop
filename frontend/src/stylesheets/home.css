@@ -2,3 +2,7 @@ body {
 	font-family: Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 20px;
 }
+.MainRow{
+	display: block;
+}
+

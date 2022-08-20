@@ -2,8 +2,7 @@ import { Response, Request } from 'express';
 import express from 'express';
 const router = express.Router();
 const Pen = require('../models/PenModel');
-const upload = require('../middleware/upload');
-import multer from 'multer';
+//const upload = require('../middleware/upload');
 
 //GET
 router.get('/', async (req: Request, res: Response) => {
@@ -17,15 +16,14 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 //POST
-router.post('/', upload.single('image'), async (req: Request, res: Response) => {
+router.post('/',async (req: Request, res: Response) => {
 	const pen = new Pen({
 		name: req.body.name,
 		category: req.body.category,
-		price: req.body.price
+		price: req.body.price,
+		url:req.body.url
 	});
-	if (req.file) {
-		pen.image = req.file.path;
-	}
+	
 	//save
 	try {
 		const savedPen = await pen.save();

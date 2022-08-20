@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
@@ -6,6 +5,7 @@ import { HomePage } from '../sites/homePage';
 import { LoginPage } from '../sites/loginPage';
 import { RegisterPage } from '../sites/registerPage';
 import { PensListPage } from '../sites/pensController/pensListPage';
+import { PenAddPage } from '../sites/pensController/penAddPage';
 
 function NavbarPenShop() {
 	return (
@@ -48,6 +48,7 @@ function NavbarPenShop() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/pens/list" element={<PensListPage />} />
+				<Route path="/pens/add" element={<PenAddPage />} />
 			</Routes>
 		</Router>
 	);
