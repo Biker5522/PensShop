@@ -1,5 +1,5 @@
-.MainRow{
-    justify-content: center;
+.MainRow {
+	justify-content: center;
 }
 
 .MenuCrudMain {
@@ -15,17 +15,20 @@
 .listButtons {
 	float: right;
 }
-.pensCRUD img{
-max-height: 7rem;
-float: left;
-aspect-ratio: 3/3;
+.pensCRUD img {
+	max-height: 8rem;
+	float: left;
+	aspect-ratio: 3/3;
+	border-bottom: 1px solid rgba(92, 92, 92, 0.384);
+	border-right: 2px solid rgba(0, 0, 0, 0.527);
+	margin-right: 40px;
 }
 .pensCRUD {
 	justify-content: center;
 	text-align: center;
 }
-.description{
+.description {
 	justify-content: center;
 	float: left;
-	padding-top: 2rem;
+	padding-top: 3.5rem;
 }

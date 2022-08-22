@@ -1,16 +1,17 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { Request, Response } from 'express';
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 
 //Routes
-	//Pens
+//Pens
 const routerPens = require('../routes/pens');
 app.use('/pens', routerPens);
 
-	//Users
+//Users
 const routerUsers = require('../routes/users');
 app.use('/', routerUsers);
 

@@ -89,7 +89,7 @@ export default function PaginatedPens(props:any) {
         previousLabel="< previous"
         //renderOnZeroPageCount={null}
         containerClassName="pagination"
-        pageLinkClassName="page-rum"
+        pageLinkClassName="page-num"
         previousLinkClassName='page-num'
         nextLinkClassName='page-num'
         activeLinkClassName='active'

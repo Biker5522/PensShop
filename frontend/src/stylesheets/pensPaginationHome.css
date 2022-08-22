@@ -1,9 +1,9 @@
-.HomePensMain{
-    display: block;
-   align-items: center;
+.HomePensMain {
+	display: block;
+	align-items: center;
 }
-.pens{
-    margin-top: 2rem;
+.pens {
+	margin-top: 2rem;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(auto, 320px));
 	grid-template-rows: 2fr;
@@ -12,54 +12,51 @@
 	grid-gap: 30px;
 	justify-content: center;
 }
-.card{
+.card {
 	display: flex;
 	aspect-ratio: 3/3;
 }
-.paginationNumbers{
+.paginationNumbers {
 	margin-top: 10px;
 	align-content: center;
 	align-items: center;
-    width: 100%;
-  
+	width: 100%;
 }
-.pagination{
+.pagination {
 	display: flex;
 	justify-content: center;
 	color: white;
 	text-decoration: none;
 	font-size: 1.4rem;
 }
-.pagination .page-num{
+.pagination .page-num {
 	cursor: pointer;
 	border-radius: 3px;
 	font-weight: 400;
 	padding: 3px 4px;
 	color: black;
 	border: 2px solid grey;
-	margin:2px;
+	margin: 2px;
 }
-.pagination .page-rum{
+.pagination .page-num active {
 	cursor: pointer;
 	border-radius: 3px;
 	font-weight: 400;
 	padding: 3px 4px;
 	color: black;
-	border: 2px solid grey;
-	margin:2px;
+	background-color: chartreuse;
+	border: 2px solid rgba(30, 255, 0, 0.397);
+	margin: 2px;
 }
-.pagination .page-num:hover{
-	background-color: rgba(165, 42, 42, 0.378);
-	color: white;
-}
-.pagination .page-rum:hover{
+
+.pagination .page-num:hover {
 	background-color: rgba(165, 42, 42, 0.378);
 	color: white;
 }
 
-.pens img{
-    max-height: 400px;
+.pens img {
+	max-height: 400px;
 	min-height: 200px;
-    aspect-ratio: 3/3;
+	aspect-ratio: 3/3;
 	border-bottom: 3px solid grey;
 }

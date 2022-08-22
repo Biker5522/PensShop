@@ -2,7 +2,7 @@ import { Response, Request } from 'express';
 import express from 'express';
 const router = express.Router();
 const Pen = require('../models/PenModel');
-//const upload = require('../middleware/upload');
+import { authRole, authRoleAdmin, authUser } from './authToken';
 
 //GET
 router.get('/', async (req: Request, res: Response) => {
@@ -16,14 +16,14 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 //POST
-router.post('/',async (req: Request, res: Response) => {
+router.post('/', authRoleAdmin, async (req: Request, res: Response) => {
 	const pen = new Pen({
 		name: req.body.name,
 		category: req.body.category,
 		price: req.body.price,
-		url:req.body.url
+		url: req.body.url
 	});
-	
+
 	//save
 	try {
 		const savedPen = await pen.save();
@@ -35,7 +35,7 @@ router.post('/',async (req: Request, res: Response) => {
 });
 
 //GET specific pen
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', authRole, async (req: Request, res: Response) => {
 	try {
 		const pen = await Pen.findById(req.params.id);
 		return res.status(200).json(pen);
@@ -46,7 +46,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 
 //Delete
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:id', authRoleAdmin, async (req: Request, res: Response) => {
 	try {
 		const removedPen = await Pen.deleteOne({ _id: req.params.id });
 		return res.status(200).json('Deleted');
@@ -57,7 +57,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
 });
 
 //PUT
-router.put('/:id', async (req: Request, res: Response) => {
+router.put('/:id', authRole, async (req: Request, res: Response) => {
 	try {
 		const updatedPen = await Pen.findByIdAndUpdate(
 			{ _id: req.params.id },

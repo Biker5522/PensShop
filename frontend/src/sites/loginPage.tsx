@@ -44,7 +44,7 @@ export const LoginPage = () => {
 					<div className="d-flex justify-content-center align-items-center">
 						<div className="LoginCard">
 							<h2>Login</h2>
-							<h5 className="alert-danger">{errorMsg}</h5>
+							<h5 className="AlertDanger">{errorMsg}</h5>
 							<Form onSubmit={SubmitHandler}>
 								{/* Email Form */}
 								<Form.Group className="mb-3" controlId="formBasicEmail">
