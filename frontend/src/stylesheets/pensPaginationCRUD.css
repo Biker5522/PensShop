@@ -1,0 +1,31 @@
+.MainRow{
+    justify-content: center;
+}
+
+.MenuCrudMain {
+	display: grid;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+.Button {
+	font-size: 2vw;
+	width: 50%;
+}
+.listButtons {
+	float: right;
+}
+.pensCRUD img{
+max-height: 7rem;
+float: left;
+aspect-ratio: 3/3;
+}
+.pensCRUD {
+	justify-content: center;
+	text-align: center;
+}
+.description{
+	justify-content: center;
+	float: left;
+	padding-top: 2rem;
+}

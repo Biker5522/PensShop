@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken";
 
 function authUser(req: any, res: any, next: any) {
 	const token = req.header('token');

@@ -8,7 +8,7 @@ export const PensHeaderComponent = () => {
 				<NavbarBrand href="/">Products</NavbarBrand>
 				<Nav>
 					<NavItem>
-						<Link className="btn btn-primary" to="../Menu/add">
+						<Link className="btn btn-primary" to="../Pens/add">
 							Add Product
 						</Link>
 					</NavItem>

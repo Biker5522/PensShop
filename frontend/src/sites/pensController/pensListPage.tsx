@@ -3,6 +3,7 @@ import { Row, Col, Button, ListGroupItem, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { PensHeaderComponent } from './pensHeaderComponent';
 import Pens from '../../components/pensPaginationCRUD';
+import '../../stylesheets/pensPaginationCRUD.css'
 
 import axios from 'axios';
 
@@ -16,32 +17,17 @@ export const PensListPage = () => {
 		});
 	}, []);
 
-	//Delete Product
-	const removePen = (_id: any) => {
-		let id: String = _id;
-		axios
-			.delete(`/pens/${_id}`)
-			.then(function(response) {
-				window.location.reload();
-			})
-			.catch(function(error) {
-				console.log(error);
-			});
-	};
-
 	return (
 		<div className="">
 			<Row>
 				<Col sm={2} />
-				<div>
-					<Pens data={backendData} />
-				</div>
-
 				<Col sm={8} className="MainRow">
-					<div className="col-md-5 Panel">
+					
 						<div className="MenuCrudMain ">
 							<PensHeaderComponent />
-							<ListGroup>
+							<div>
+					<Pens data={backendData} />
+							{/* <ListGroup>
 								{backendData.map((pen: any) => (
 									<ListGroupItem>
 										<div className="d-grid">
@@ -65,7 +51,7 @@ export const PensListPage = () => {
 										</div>
 									</ListGroupItem>
 								))}
-							</ListGroup>
+							</ListGroup> */}
 						</div>
 					</div>
 				</Col>

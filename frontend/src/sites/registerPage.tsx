@@ -50,7 +50,7 @@ export const RegisterPage = () => {
 									<Form.Label>Email Adress</Form.Label>
 									<Form.Control
 										type="email"
-										placeholder="Wpisz email"
+										placeholder="enter email"
 										value={email}
 										onChange={(e: any) => setEmail(e.target.value)}
 									/>

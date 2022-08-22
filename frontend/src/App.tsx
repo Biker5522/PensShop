@@ -3,13 +3,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './sites/homePage';
 import NavbarPenShop from './components/navbarPenShop';
-import { Row, Col } from 'react-bootstrap';
-import BannerPensShop from './components/bannerPenShop';
+
 function App() {
 	return (
 		<div className="App">
 			<NavbarPenShop />
-			
 		</div>
 	);
 }

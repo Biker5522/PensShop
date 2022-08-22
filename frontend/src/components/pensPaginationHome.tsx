@@ -37,10 +37,10 @@ export default function PaginatedPensHome(props:any) {
       <Card.Body>
         <Card.Title>{pen.name}</Card.Title>
         <Card.Text>
-          {pen.category}
-          <p>{pen.price}</p>
+         Category: {pen.category}
+          Price:<p style={{color:"green"}}>{pen.price}$</p>
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">Add to cart</Button>
       </Card.Body>
     </Card>
                 </div>

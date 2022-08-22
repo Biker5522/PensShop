@@ -6,9 +6,13 @@ const app = express();
 app.use(express.json());
 
 //Routes
-//Pens
+	//Pens
 const routerPens = require('../routes/pens');
 app.use('/pens', routerPens);
+
+	//Users
+const routerUsers = require('../routes/users');
+app.use('/', routerUsers);
 
 app.get('/', function(req: Request, res: Response) {
 	res.send('Pen World');
