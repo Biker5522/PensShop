@@ -19,8 +19,8 @@ export function authRoleAdmin(req: any, res: any, next: any) {
 	if (!token) return res.status(401).send('Access Denied');
 	try {
 		const verified = jwt.verify(token, process.env.TOKEN_SECRET) && decoded.role == 'admin';
-
 		req.user = verified;
+		if (!verified) return res.status(401).send('Access Denied');
 		next();
 	} catch (err) {
 		res.status(400).send('Invalid Token');

@@ -60,3 +60,35 @@
 	aspect-ratio: 3/3;
 	border-bottom: 3px solid grey;
 }
+.FilterBar {
+	width: 100%;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	align-self: center;
+	justify-content: center;
+}
+.FilterBar div {
+	width: 40%;
+	float: left;
+	padding-right: 10px;
+}
+.FilterBar Form {
+	display: flex;
+	justify-content: center;
+}
+.filterButton {
+	margin-top: 2rem;
+	padding-right: 0;
+	width: 10%;
+}
+.filterButton img {
+	max-width: 1.4rem;
+	float: left;
+	margin-top: 4px;
+}
+.filterButton div p {
+	margin: 0;
+	padding: 0;
+	text-align: justify;
+}

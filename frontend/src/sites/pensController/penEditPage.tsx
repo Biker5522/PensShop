@@ -6,15 +6,16 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 export const PenEditPage = () => {
 	let [ name, setName ] = useState('');
 	const [ category, setCategory ] = useState('');
-    const [ url, setUrl ] = useState('');
+	const [ url, setUrl ] = useState('');
 	const [ price, setPrice ] = useState('');
 	const { id } = useParams();
+	const [ errorMsg, setError ] = useState('');
 
 	useEffect(() => {
 		axios(`/pens/${id}`).then((res: any) => {
 			setName(res.data.name);
 			setCategory(res.data.category);
-            setUrl(res.data.url);
+			setUrl(res.data.url);
 			setPrice(res.data.price);
 		});
 	}, []);
@@ -24,12 +25,18 @@ export const PenEditPage = () => {
 		e.preventDefault();
 
 		//Api connect POST User
-		await axios.put(`/pens/${id}`, {
-			name: name,
-			category: category,
-			price: price,
-            url:url
-		});
+		await axios
+			.put(`/pens/${id}`, {
+				name: name,
+				category: category,
+				price: price,
+				url: url
+			})
+			.catch((error) => {
+				if (error.response) {
+					setError(error.response.data.result);
+				}
+			});
 		navigate('/pens/list');
 	};
 	return (
@@ -41,6 +48,7 @@ export const PenEditPage = () => {
 					<div className="Card">
 						<Form onSubmit={SubmitHandler}>
 							<h2>Edit Product</h2>
+							<h5 className="alert-danger">{errorMsg}</h5>
 							<Form.Group>
 								<Form.Label>Name</Form.Label>
 								<Form.Control
@@ -63,7 +71,7 @@ export const PenEditPage = () => {
 									value={price}
 									onChange={(e: any) => setPrice(e.target.value)}
 								/>
-                                <Form.Label>Image</Form.Label>
+								<Form.Label>Image</Form.Label>
 								<Form.Control
 									type="text"
 									placeholder="Enter Url"

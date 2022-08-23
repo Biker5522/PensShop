@@ -10,14 +10,18 @@ export default function PaginatedPensHome(props:any) {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 8;
 //Filter
+const [ show, setShow ] = useState(false);
   const [ category, setCategory ] = useState('');
+  const [ name, setName ] = useState('');
+  const [ minPrice, setMinPrice ] = useState(0);
+  const [ maxPrice, setMaxPrice ] = useState(999);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     setCurrentItems(data.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage,data ]);
+  }, [itemOffset, itemsPerPage, data ]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event:any) => {
@@ -31,29 +35,58 @@ export default function PaginatedPensHome(props:any) {
   return (
     <>
     <div className="HomePensMain">
-    <div className="FilterBar">
-							<Form /* onSubmit={SubmitHandler} */>
+    <div className='FilterBar'>
+      <div className='filterButton' onClick={()=>setShow(true)}>
+        <img src="https://www.freeiconspng.com/thumbs/filter-icon/filter-icon-0.png"></img>
+      <div><p>Filter</p></div>
+      </div>
+						{	show?<Form>
 								{/* Email Form */}
 								<Form.Group className="mb-3" controlId="formBasicEmail">
-									<Form.Label>Name</Form.Label>
+									<Form.Label>Search</Form.Label>
 									<Form.Control
 										type="name"
 										placeholder="Enter Name"
-										/* value={name} */
-										/* onChange={(e: any) => setName(e.target.value)} */
+										 value={name} 
+										onChange={(e: any) => setName(e.target.value)} 
 									/>
 								</Form.Group>
+                <div>
+                <Form.Label>Category</Form.Label>
 								<Form.Select  onChange={(e: any) => setCategory(e.target.value)} value={category} >
+                
 									<option value="">Open this to choose</option>
 									<option value="Fountain">Fountain Pen</option>
 									<option value="Ballpoint">Ballpoint</option>
 									<option value="Gel-Pen">Gel Pen</option>
 								</Form.Select>
-							</Form>
+                
+
+</div>
+                <Form.Group className="mb-3 priceForm" controlId="formBasicEmail">
+									<Form.Label>Min Price</Form.Label>
+									<Form.Control
+										type="number"
+										placeholder="Enter Min Value"
+										 value={minPrice} 
+										onChange={(e: any) => setMinPrice(e.target.value)} 
+									/>
+								</Form.Group>
+                <Form.Group className="mb-3 priceForm" controlId="formBasicEmail">
+									<Form.Label>Max Price</Form.Label>
+									<Form.Control
+										type="number"
+										placeholder="Enter MaxValue"
+										 value={maxPrice} 
+										onChange={(e: any) => setMaxPrice(e.target.value)} 
+									/>
+								</Form.Group>
+							</Form>:null}
 						</div>
+            
     <div className='pens'>
-    
-        {currentItems.filter((penf:any)=> penf.category.includes(category)).map((pen:any)=>{
+        {currentItems.filter((pen:any)=> pen.category.includes(category)).filter((pen:any)=> pen.name.toLowerCase().includes(name.toLowerCase()))
+        .filter((pen:any)=> (pen.price >=minPrice)).filter((pen:any)=> (pen.price <=maxPrice)).map((pen:any)=>{
             return(
                 <div>
                     <Card style={{ width: '18rem' }}>
