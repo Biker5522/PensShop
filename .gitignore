@@ -10,7 +10,8 @@ node_modules
 # testing
 /coverage
 
-
+/build
+/frontend/build
 
 # misc
 .DS_Store
