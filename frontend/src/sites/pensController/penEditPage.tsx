@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { Row, Col, FormGroup, Form, Button } from 'react-bootstrap';
+import { useCookies } from 'react-cookie';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 export const PenEditPage = () => {
@@ -11,8 +12,17 @@ export const PenEditPage = () => {
 	const { id } = useParams();
 	const [ errorMsg, setError ] = useState('');
 
+	//Get token from cookies
+	const [ cookies, setCookie, removeCookie ] = useCookies([ 'token' ]);
+	let token = cookies.token;
+
+	const headers = {
+		'Content-Type': 'application/json',
+		token: token
+	};
+
 	useEffect(() => {
-		axios(`/pens/${id}`).then((res: any) => {
+		axios(`/pens/${id}`, { headers }).then((res: any) => {
 			setName(res.data.name);
 			setCategory(res.data.category);
 			setUrl(res.data.url);
@@ -44,7 +54,7 @@ export const PenEditPage = () => {
 			<Row>
 				<Col sm={2} />
 
-				<Col sm={8} className="CardMain">
+				<Col sm={8} className="addCard">
 					<div className="Card">
 						<Form onSubmit={SubmitHandler}>
 							<h2>Edit Product</h2>

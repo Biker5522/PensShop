@@ -3,6 +3,7 @@ import React, { SyntheticEvent, useState } from 'react';
 import { Row, Col, FormGroup, Form, Button } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
 import { Link, useNavigate } from 'react-router-dom';
+import '../../stylesheets/penAdd.css';
 export const PenAddPage = () => {
 	const [ name, setName ] = useState('');
 	const [ category, setCategory ] = useState('');
@@ -45,7 +46,7 @@ export const PenAddPage = () => {
 		<div className="">
 			<Row>
 				<Col sm={2} />
-				<Col sm={8} className="CardMain">
+				<Col sm={8} className="addCard">
 					<div className="Card">
 						<h2>Add Position</h2>
 						<h5 className="AlertDanger">{errorMsg}</h5>

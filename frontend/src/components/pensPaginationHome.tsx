@@ -36,17 +36,25 @@ const [ show, setShow ] = useState(false);
     <>
     <div className="HomePensMain">
     <div className='FilterBar'>
-      <div className='filterButton' onClick={()=>setShow(true)}>
+      <div className='filterButton' onClick={()=>{if(show==false){setShow(true)}
+      else {
+        setShow(false);
+        setCategory('');
+        setName('');
+        setMaxPrice(999);
+        setMinPrice(0);
+
+      }
+      }}>
         <img src="https://www.freeiconspng.com/thumbs/filter-icon/filter-icon-0.png"></img>
       <div><p>Filter</p></div>
       </div>
 						{	show?<Form>
-								{/* Email Form */}
 								<Form.Group className="mb-3" controlId="formBasicEmail">
 									<Form.Label>Search</Form.Label>
 									<Form.Control
 										type="name"
-										placeholder="Enter Name"
+										placeholder="Search"
 										 value={name} 
 										onChange={(e: any) => setName(e.target.value)} 
 									/>
@@ -60,8 +68,7 @@ const [ show, setShow ] = useState(false);
 									<option value="Ballpoint">Ballpoint</option>
 									<option value="Gel-Pen">Gel Pen</option>
 								</Form.Select>
-                
-
+              
 </div>
                 <Form.Group className="mb-3 priceForm" controlId="formBasicEmail">
 									<Form.Label>Min Price</Form.Label>

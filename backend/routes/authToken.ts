@@ -18,7 +18,8 @@ export function authRoleAdmin(req: any, res: any, next: any) {
 	let decoded: any = jwt_decode(token);
 	if (!token) return res.status(401).send('Access Denied');
 	try {
-		const verified = jwt.verify(token, process.env.TOKEN_SECRET) && decoded.role == 'admin';
+		console.log(decoded._role);
+		const verified = jwt.verify(token, process.env.TOKEN_SECRET) && decoded._role == 'admin';
 		req.user = verified;
 		if (!verified) return res.status(401).send('Access Denied');
 		next();
@@ -32,8 +33,8 @@ export function authRole(req: any, res: any, next: any) {
 	if (!token) return res.status(401).send('Access Denied');
 	try {
 		const verified =
-			jwt.verify(token, process.env.TOKEN_SECRET) && (decoded.role == 'admin' || decoded.role == 'moderator');
-
+			jwt.verify(token, process.env.TOKEN_SECRET) && (decoded._role == 'admin' || decoded._role == 'moderator');
+		if (!verified) return res.status(401).send('Access Denied');
 		req.user = verified;
 		next();
 	} catch (err) {
