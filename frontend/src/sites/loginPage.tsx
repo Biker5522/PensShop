@@ -80,6 +80,12 @@ export const LoginPage = () => {
 								</div>
 							</Form>
 						</div>
+						<div className="LoginCard">
+							<p>
+								Admin: <p>Login: admin@gmail.com </p>
+								<p>Password: qwerty</p>
+							</p>
+						</div>
 					</div>
 				</Col>
 				<Col sm={2} />
