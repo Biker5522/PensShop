@@ -18,7 +18,7 @@ app.use('/', routerUsers);
 
 //Deployment
 __dirname = path.resolve();
-let NODE_ENV = 'dev';
+let NODE_ENV = 'production';
 if (NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '/frontend/build')));
 	app.get('*', (req, res) => {
