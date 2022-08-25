@@ -1,4 +1,4 @@
-.LoginCard {
+.loginCard {
 	margin: 40px auto;
 	width: 45%;
 	min-width: 22rem;
@@ -11,7 +11,7 @@
 	border: 4px solid rgba(0, 0, 0, 0.877);
 }
 
-.LoginCard .Button {
+.loginCard .Button {
 	font-size: 1.2rem;
 	width: 50%;
 	max-width: 9rem;

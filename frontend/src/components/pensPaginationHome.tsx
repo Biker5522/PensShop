@@ -19,9 +19,13 @@ const [ show, setShow ] = useState(false);
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(data.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, data ]);
+    //Filter Current items
+    setCurrentItems(data.filter((pen:any)=> pen.category.includes(category)).filter((pen:any)=> pen.name.toLowerCase().includes(name.toLowerCase()))
+    .filter((pen:any)=> (pen.price >=minPrice)).filter((pen:any)=> (pen.price <=maxPrice)).slice(itemOffset, endOffset));
+    //Filter Items and set page count
+    setPageCount(Math.ceil(data.filter((pen:any)=> pen.category.includes(category)).filter((pen:any)=> pen.name.toLowerCase().includes(name.toLowerCase()))
+    .filter((pen:any)=> (pen.price >=minPrice)).filter((pen:any)=> (pen.price <=maxPrice)).length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, data,category,name, maxPrice,minPrice ]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event:any) => {
@@ -36,7 +40,7 @@ const [ show, setShow ] = useState(false);
     <>
     <div className="HomePensMain">
     <div className='FilterBar'>
-      <div className='filterButton' onClick={()=>{if(show==false){setShow(true)}
+      <div className='FilterButton' onClick={()=>{if(show==false){setShow(true)}
       else {
         setShow(false);
         setCategory('');
@@ -92,8 +96,7 @@ const [ show, setShow ] = useState(false);
 						</div>
             
     <div className='pens'>
-        {currentItems.filter((pen:any)=> pen.category.includes(category)).filter((pen:any)=> pen.name.toLowerCase().includes(name.toLowerCase()))
-        .filter((pen:any)=> (pen.price >=minPrice)).filter((pen:any)=> (pen.price <=maxPrice)).map((pen:any)=>{
+        {currentItems.map((pen:any)=>{
             return(
                 <div>
                     <Card style={{ width: '18rem' }}>
@@ -102,7 +105,7 @@ const [ show, setShow ] = useState(false);
         <Card.Title style={{fontStyle:"italic"}}><strong>{pen.name}</strong></Card.Title>
         <Card.Text>
          Category: {pen.category}
-          Price:<p style={{color:"green",fontSize:"1.5rem"}}>{pen.price}$</p>
+          <p style={{color:"green",fontSize:"1.5rem"}}>{pen.price}$</p>
         </Card.Text>
         <Button variant="primary">Add to cart</Button>
       </Card.Body>

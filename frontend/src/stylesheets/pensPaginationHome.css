@@ -1,4 +1,4 @@
-.HomePensMain {
+.homePensMain {
 	display: block;
 	align-items: center;
 }
@@ -77,17 +77,17 @@
 	display: flex;
 	justify-content: center;
 }
-.filterButton {
+.FilterButton {
 	margin-top: 2rem;
 	padding-right: 0;
 	width: 10%;
 }
-.filterButton img {
+.FilterButton img {
 	max-width: 1.4rem;
 	float: left;
 	margin-top: 4px;
 }
-.filterButton div p {
+.FilterButton div p {
 	margin: 0;
 	padding: 0;
 	text-align: justify;

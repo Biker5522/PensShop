@@ -42,9 +42,9 @@ export const LoginPage = () => {
 				<Col sm={2} />
 				<Col sm={8}>
 					<div className="d-flex justify-content-center align-items-center">
-						<div className="LoginCard">
+						<div className="loginCard">
 							<h2>Login</h2>
-							<h5 className="AlertDanger">{errorMsg}</h5>
+							<h5 className="alertDanger">{errorMsg}</h5>
 							<Form onSubmit={SubmitHandler}>
 								{/* Email Form */}
 								<Form.Group className="mb-3" controlId="formBasicEmail">
@@ -67,7 +67,7 @@ export const LoginPage = () => {
 									/>
 								</Form.Group>
 								<Link to="/Register">You don't have an account? </Link>
-								<div className="ButtonsContainer">
+								<div className="buttonsContainer">
 									{/* Button */}
 									<Button
 										className="Button"
@@ -80,7 +80,7 @@ export const LoginPage = () => {
 								</div>
 							</Form>
 						</div>
-						<div className="LoginCard">
+						<div className="loginCard">
 							<p>
 								Admin: <p>Login: admin@gmail.com </p>
 								<p>Password: qwerty</p>

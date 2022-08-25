@@ -32,9 +32,13 @@ const headers = {
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(data.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage,data ]);
+    //Set Filtered Current Items
+    setCurrentItems(data.filter((pen:any)=> pen.category.includes(category)).filter((pen:any)=> pen.name.toLowerCase().includes(name.toLowerCase()))
+    .filter((pen:any)=> (pen.price >=minPrice)).filter((pen:any)=> (pen.price <=maxPrice)).slice(itemOffset, endOffset));
+    //Slice filtered data to pages
+    setPageCount(Math.ceil(data.filter((pen:any)=> pen.category.includes(category)).filter((pen:any)=> pen.name.toLowerCase().includes(name.toLowerCase()))
+    .filter((pen:any)=> (pen.price >=minPrice)).filter((pen:any)=> (pen.price <=maxPrice)).length / itemsPerPage));
+  }, [itemOffset, itemsPerPage,data,name,category,minPrice,maxPrice ]);
 
   //Delete Product
 	const removePen = (_id: any) => {
@@ -61,7 +65,7 @@ const headers = {
   return (
     <>
     <div className='pensCRUD'>
-    <div className='FilterBar' style={{border:"1px solid rgba(92, 92, 92, 0.384)"}}>
+    <div className='filterBar' style={{border:"1px solid rgba(92, 92, 92, 0.384)"}}>
       <div className='filterButton mt-1' onClick={()=>{if(show==false){setShow(true)}
       else {
         setShow(false);
@@ -116,8 +120,7 @@ const headers = {
 								</Form.Group>
 							</Form>:null}
 						</div>
-            {currentItems.filter((pen:any)=> pen.category.includes(category)).filter((pen:any)=> pen.name.toLowerCase().includes(name.toLowerCase()))
-        .filter((pen:any)=> (pen.price >=minPrice)).filter((pen:any)=> (pen.price <=maxPrice)).map((pen:any)=>{
+            {currentItems.map((pen:any)=>{
             return(
                 <div>
                     <ListGroup>

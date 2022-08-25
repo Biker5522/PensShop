@@ -2,7 +2,7 @@
 	justify-content: center;
 }
 
-.MenuCrudMain {
+.menuCrudMain {
 	display: grid;
 	flex-direction: row;
 	flex-wrap: nowrap;
