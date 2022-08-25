@@ -32,3 +32,8 @@
 	float: left;
 	padding-top: 3.5rem;
 }
+.FilterImage {
+	max-width: 1.7rem;
+	float: left;
+	margin-top: 4px;
+}

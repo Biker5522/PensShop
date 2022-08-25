@@ -65,8 +65,8 @@ const headers = {
   return (
     <>
     <div className='pensCRUD'>
-    <div className='filterBar' style={{border:"1px solid rgba(92, 92, 92, 0.384)"}}>
-      <div className='filterButton mt-1' onClick={()=>{if(show==false){setShow(true)}
+    <div className='FilterBar' style={{border:"1px solid rgba(92, 92, 92, 0.384)"}}>
+      <div className='filterButton ' onClick={()=>{if(show==false){setShow(true)}
       else {
         setShow(false);
         setCategory('');
@@ -76,7 +76,7 @@ const headers = {
 
       }
       }}>
-        <img style={{border:"0px solid white"}} src="https://www.freeiconspng.com/thumbs/filter-icon/filter-icon-0.png"></img>
+        <img className="FilterImage " style={{border:"0px solid white"}} src="https://www.freeiconspng.com/thumbs/filter-icon/filter-icon-0.png"></img>
       <div><p>Filter</p></div>
       </div>
 						{	show?<Form>
